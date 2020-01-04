@@ -52,13 +52,15 @@ ext {
             //butterknife
             butterknife_api         : "com.jakewharton:butterknife:10.1.0",
             annotationProcessor     : "com.jakewharton:butterknife-compiler:10.1.0",
-            //eventbus
-            eventbus                : "org.greenrobot:eventbus:3.1.1",
             //RecycleVierw_Adapter
             recyclevierw_adapter    : "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.47",
             //沉浸式适配
             immersionbar            : "com.gyf.immersionbar:immersionbar:3.0.0",
             immersionbar_components : "com.gyf.immersionbar:immersionbar-components:3.0.0",
+            //utilcode
+            utilcode                : "com.blankj:utilcode:1.21.0",
+            //fastjson
+            "fastjson"              : "com.alibaba:fastjson:1.2.59",
     ]
 }
 

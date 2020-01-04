@@ -3,4 +3,62 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <!--主色调-->
+    <color name="basecolor">#FFE500</color>
+    <color name="basecolorShallow">#FAFA19</color>
+    <color name="basecolorDeep">#FAE519</color>
+
+    <!--字体、背景-->
+    <color name="layout_bg">#f6f6f6</color>
+    <color name="white">#FFFFFF</color>
+    <color name="red">#FF0000</color>
+    <color name="blue">#3878FF</color>
+    <color name="purple">#5F4398</color>
+    <color name="black">#000000</color>
+    <color name="yellow">#FFE200</color>
+    <color name="gray">#F7F7F7</color>
+    <color name="gray_F0F0F0">#F0F0F0</color>
+    <color name="gray_EAEAEA">#EAEAEA</color>
+    <color name="gray_EBEBEB">#EBEBEB</color>
+    <color name="gray_lable_bg">#F4F5F6</color>
+    <color name="color_8290AF">#8290AF</color>
+    <color name="stateBar">#FFFFFF</color>
+    <color name="transparency">#00000000</color>
+    <color name="item_title_text">#202020</color>
+    <color name="item_text">#404040</color>
+    <color name="item_text_secondary">#9a9a9a</color>
+    <color name="text_color_white">#FFFFFF</color>
+    <color name="text_color_black">#000000</color>
+    <color name="text_color_333333">#333333</color>
+    <color name="text_color_666666">#666666</color>
+    <color name="text_color_999999">#999999</color>
+    <color name="text_color_DDDDDD">#DDDDDD</color>
+    <color name="text_color_AAAAAA">#AAAAAA</color>
+    <color name="text_color_A8A8A8">#A8A8A8</color>
+    <color name="text_color_8A7E17">#8A7E17</color>
+    <color name="text_color_8590A6">#8590A6</color>
+    <color name="text_color_80">#808080</color>
+    <color name="text_color_B8B8B8">#B8B8B8</color>
+    <color name="text_color_888EA6">#888EA6</color>
+    <color name="text_color_C1C1C1">#C1C1C1</color>
+    <color name="color_6C">#CCCCCC</color>
+    <color name="text_color_tab_pre">#404040</color>
+    <color name="home_tab_bg">#FFFFFF</color>
+    <color name="text_color_blue">#3878FF</color>
+    <color name="text_color_red_1">#E01B00</color>
+    <color name="text_color_red_2">#EE2C2C</color>
+    <color name="text_color_green">#0BC310</color>
+    <color name="text_color_yellow">#FFE200</color>
+    <color name="text_color_orange">#FFA024</color>
+    <color name="divider_color">#d3d3d3</color>
+
+    <color name="toast_bg_color">#F4F5F6</color>
+
+    <color name="entry_bg">#FBF8E1</color>
+
+    <color name="scroll_bar">#ffbababa</color>
+
+    <color name="banner_indicator_selected">#2E2E2E</color>
+    <color name="banner_indicator_unselected">#E1E1E1</color>
 </resources>

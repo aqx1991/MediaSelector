@@ -38,8 +38,6 @@ dependencies {
     //rx系列与View生命周期同步
     api(rootProject.ext.dependencies.rxlifecycle)
     api(rootProject.ext.dependencies.rxlifecycle_components)
-    //eventbus
-    api rootProject.ext.dependencies.eventbus
     //RecycleVierw_Adapter
     api rootProject.ext.dependencies.recyclevierw_adapter
     //glide图片加载
@@ -51,4 +49,10 @@ dependencies {
     //immersionbar
     api rootProject.ext.dependencies.immersionbar
     api rootProject.ext.dependencies.immersionbar_components
+    //utilcode
+    api(rootProject.ext.dependencies.utilcode) {
+        exclude group: 'com.blankj', module: 'bus'
+    }
+    //fastjson
+    api rootProject.ext.dependencies.fastjson
 }

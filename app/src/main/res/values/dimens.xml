@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--字体-->
+    <dimen name="title">18sp</dimen>
+    <dimen name="textsize_4">4sp</dimen>
+    <dimen name="textsize_5">5sp</dimen>
+    <dimen name="textsize_6">6sp</dimen>
+    <dimen name="textsize_7">7sp</dimen>
+    <dimen name="textsize_8">8sp</dimen>
+    <dimen name="textsize_9">9sp</dimen>
+    <dimen name="textsize_10">10sp</dimen>
+    <dimen name="textsize_11">11sp</dimen>
+    <dimen name="textsize_12">12sp</dimen>
+    <dimen name="textsize_13">13sp</dimen>
+    <dimen name="textsize_14">14sp</dimen>
+    <dimen name="textsize_15">15sp</dimen>
+    <dimen name="textsize_16">16sp</dimen>
+    <dimen name="textsize_17">17sp</dimen>
+    <dimen name="textsize_18">18sp</dimen>
+    <dimen name="textsize_19">19sp</dimen>
+    <dimen name="textsize_20">20sp</dimen>
+    <dimen name="textsize_21">21sp</dimen>
+    <dimen name="textsize_22">22sp</dimen>
+    <dimen name="textsize_24">24sp</dimen>
+    <dimen name="textsize_25">25sp</dimen>
+    <dimen name="textsize_26">26sp</dimen>
+    <dimen name="textsize_27">27sp</dimen>
+    <dimen name="textsize_33">33sp</dimen>
+    <dimen name="textsize_38">38sp</dimen>
+    <dimen name="textsize_50">50sp</dimen>
+    <dimen name="button_text">15sp</dimen>
+
+    <!--高度-->
+    <dimen name="title_height">49dp</dimen>
+    <dimen name="cut_line_height">1dp</dimen>
+    <dimen name="button_height">45dp</dimen>
+    <dimen name="item_height">48dp</dimen>
+    <dimen name="home_tab_height">49dp</dimen>
+
+    <!--边距-->
+    <dimen name="cardPicRadius">5dp</dimen>
+    <dimen name="cardElevation">0.75dp</dimen>
+    <dimen name="title_elevation">3dp</dimen>
+    <dimen name="margin_edge_15">15dp</dimen>
+    <dimen name="margin_edge_20">20dp</dimen>
+    <dimen name="margin_edge_25">25dp</dimen>
+    <dimen name="margin_edge_30">30dp</dimen>
+    <dimen name="margin_edge_35">35dp</dimen>
+    <dimen name="margin_edge_40">40dp</dimen>
+    <dimen name="margin_edge_50">50dp</dimen>
+    <dimen name="margin_edge_10">10dp</dimen>
+    <dimen name="margin_edge_12">12dp</dimen>
+    <dimen name="margin_edge_8">8dp</dimen>
+    <dimen name="margin_edge_5">5dp</dimen>
+    <dimen name="margin_edge_6">6dp</dimen>
+    <dimen name="margin_edge_3">3dp</dimen>
+    <dimen name="margin_edge_2">2dp</dimen>
+    <dimen name="margin_edge_1">1dp</dimen>
+    <dimen name="lineSpacingExtra">3dp</dimen>
+    <dimen name="spacing_3dp">3dp</dimen>
+
+    <dimen name="scroll_bar">3dp</dimen>
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="status_bar_height">0dp</dimen>
+
+</resources>
