@@ -1,0 +1,54 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.media_versionCode
+        versionName rootProject.ext.android.media_versionName
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "boolean", "DEBUG_MODE", "false"
+        }
+        debug {
+            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "boolean", "DEBUG_MODE", "true"
+        }
+    }
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation rootProject.ext.support.appcompat
+    annotationProcessor rootProject.ext.support.annotation
+
+    implementation rootProject.ext.support.recyclerview
+    implementation rootProject.ext.support.cardview
+    implementation rootProject.ext.support.layout
+
+    //rxjava
+    api rootProject.ext.dependencies.rxjava
+    //rx系列与View生命周期同步
+    api(rootProject.ext.dependencies.rxlifecycle)
+    api(rootProject.ext.dependencies.rxlifecycle_components)
+    //eventbus
+    api rootProject.ext.dependencies.eventbus
+    //RecycleVierw_Adapter
+    api rootProject.ext.dependencies.recyclevierw_adapter
+    //glide图片加载
+    api(rootProject.ext.dependencies.glide) {
+        exclude group: 'com.android.support'
+    }
+    api rootProject.ext.dependencies.glide_integration
+    annotationProcessor rootProject.ext.dependencies.glide_compiler
+    //immersionbar
+    api rootProject.ext.dependencies.immersionbar
+    api rootProject.ext.dependencies.immersionbar_components
+}
