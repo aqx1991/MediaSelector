@@ -54,13 +54,12 @@ ext {
             annotationProcessor     : "com.jakewharton:butterknife-compiler:10.1.0",
             //RecycleVierw_Adapter
             recyclevierw_adapter    : "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.47",
-            //沉浸式适配
-            immersionbar            : "com.gyf.immersionbar:immersionbar:3.0.0",
-            immersionbar_components : "com.gyf.immersionbar:immersionbar-components:3.0.0",
             //utilcode
             utilcode                : "com.blankj:utilcode:1.21.0",
             //fastjson
             "fastjson"              : "com.alibaba:fastjson:1.2.59",
+            //json解析
+            "gson"                  : "com.google.code.gson:gson:2.8.5",
     ]
 }
 

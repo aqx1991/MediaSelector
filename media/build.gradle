@@ -46,13 +46,12 @@ dependencies {
     }
     api rootProject.ext.dependencies.glide_integration
     annotationProcessor rootProject.ext.dependencies.glide_compiler
-    //immersionbar
-    api rootProject.ext.dependencies.immersionbar
-    api rootProject.ext.dependencies.immersionbar_components
     //utilcode
     api(rootProject.ext.dependencies.utilcode) {
         exclude group: 'com.blankj', module: 'bus'
     }
     //fastjson
     api rootProject.ext.dependencies.fastjson
+    //json解析
+    api rootProject.ext.dependencies.gson
 }

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/picture_tv_photo"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_height"
+        android:background="@drawable/picture_item_select_bg"
+        android:gravity="center"
+        android:text="@string/selector_photograph"
+        android:textColor="@color/color_53575e"
+        android:textSize="@dimen/textsize_14" />
+
+    <View
+        android:id="@+id/top_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/cut_line_height"
+        android:layout_below="@id/picture_tv_photo"
+        android:background="@color/gray_EAEAEA" />
+
+    <TextView
+        android:id="@+id/picture_tv_video"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_height"
+        android:layout_below="@id/top_line"
+        android:background="@drawable/picture_item_select_bg"
+        android:gravity="center"
+        android:text="@string/selector_record_video"
+        android:textColor="@color/color_53575e"
+        android:textSize="@dimen/textsize_14" />
+
+    <TextView
+        android:id="@+id/video_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/cut_line_height"
+        android:layout_below="@id/picture_tv_video"
+        android:background="@color/color_EEEEEE" />
+
+    <TextView
+        android:id="@+id/bottom_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_edge_6"
+        android:layout_below="@id/video_line"
+        android:background="@color/color_EEEEEE" />
+
+    <TextView
+        android:id="@+id/picture_tv_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_height"
+        android:layout_below="@id/bottom_line"
+        android:background="@drawable/picture_item_select_bg"
+        android:gravity="center"
+        android:text="@string/selector_cancel"
+        android:textColor="@color/color_53575e"
+        android:textSize="@dimen/textsize_14" />
+</RelativeLayout>

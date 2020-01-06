@@ -61,4 +61,9 @@
 
     <color name="banner_indicator_selected">#2E2E2E</color>
     <color name="banner_indicator_unselected">#E1E1E1</color>
+
+    <color name="transparent_white">#F0FFFFFF</color>
+    <color name="transparent_e0db">#E0DBDBDB</color>
+    <color name="color_53575e">#53575e</color>
+    <color name="color_EEEEEE">#EEEEEE</color>
 </resources>

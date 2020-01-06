@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">media</string>
+
+    <string name="picture_error">图片已损坏</string>
+    <string name="picture_video_error">视频已损坏</string>
+    <string name="picture_audio_error">音频已损坏</string>
+
+    <string name="picture_message_max_num">你最多可以选择%1$s张图片</string>
+    <string name="picture_message_video_max_num">你最多可以选择%1$s个视频</string>
+    <string name="picture_message_audio_max_num">你最多可以选择%1$s个音频</string>
+
+    <string name="picture_empty_audio_title">无音频文件\n</string>
+    <string name="picture_empty_title">无视频或照片\n</string>
 </resources>

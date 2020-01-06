@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--自定义进度条-->
+    <style name="customProgressDialog" parent="@android:style/Theme.Holo.Light.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/transparency</item>
+    </style>
+
+    <style name="Media_Icon_Tab_Style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/home_tab_height</item>
+        <item name="android:button">@null</item>
+        <item name="android:background">@color/home_tab_bg</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:drawablePadding">-20dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="ThemeDialogAnim" mce_bogus="1" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/anim_up_in</item>
+        <item name="android:windowExitAnimation">@anim/anim_down_out</item>
+    </style>
+</resources>

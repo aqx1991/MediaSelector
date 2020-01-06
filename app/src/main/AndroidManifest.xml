@@ -1,6 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.lucky_aqx.mediaselector">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.lucky_aqx.mediaselector"
+    tools:ignore="ProtectedPermissions">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_MEDIA_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <!--震动-->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!--允许程序读写手机状态和身份-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <!-- 适配全面屏 -->
+    <meta-data
+        android:name="android.max_aspect"
+        android:value="2.4" />
+    <!-- 适配华为(hua wei)刘海屏 -->
+    <meta-data
+        android:name="android.notch_support"
+        android:value="true" />
+    <!-- 适配小米(xiao mi)刘海屏 -->
+    <meta-data
+        android:name="notch.config"
+        android:value="portrait|landscape" />
 
     <application
         android:name="MyApplication"
@@ -9,8 +40,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        android:theme="@style/AppTheme"
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+        <activity
+            android:name=".ui.mvp.HomeActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
