@@ -1,6 +1,7 @@
 package com.lucky_aqx.mediaselector.ui.mvp;
 
 import android.content.Intent;
+import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,21 +14,24 @@ import android.widget.RadioGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.blankj.utilcode.util.ToastUtils;
-import com.google.gson.Gson;
 import com.lucky_aqx.media.config.PictureConfig;
 import com.lucky_aqx.media.config.PictureMimeType;
 import com.lucky_aqx.media.entry.LocalMedia;
-import com.lucky_aqx.media.utils.LogUtils;
 import com.lucky_aqx.media.utils.MediaUtils;
 import com.lucky_aqx.media.utils.PictureFileUtils;
 import com.lucky_aqx.media.utils.PictureMediaScannerConnection;
+import com.lucky_aqx.media.utils.SdkVersionUtils;
 import com.lucky_aqx.media.utils.StringUtils;
 import com.lucky_aqx.media.utils.ValueOf;
 import com.lucky_aqx.mediaselector.R;
+import com.lucky_aqx.mediaselector.common.bean.HomeMediaBean;
+import com.lucky_aqx.mediaselector.common.utils.UIHelper;
+import com.lucky_aqx.mediaselector.ui.adapter.HomeAdapter;
 import com.lucky_aqx.mediaselector.ui.base.BaseActivity;
 import com.lucky_aqx.mediaselector.ui.base.permission.PermissionHelper;
 import com.lucky_aqx.mediaselector.ui.base.permission.PermissionListener;
@@ -38,6 +42,7 @@ import com.lucky_aqx.mediaselector.ui.weight.PhotoItemSelectedDialog;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -68,6 +73,9 @@ public class HomeActivity extends BaseActivity {
     private PicFragment picFragment = null;
     private VideoFragment videoFragment = null;
 
+    private List<HomeMediaBean> mediaList = new ArrayList<>();
+    private HomeAdapter mAdapter;
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_home;
@@ -95,6 +103,12 @@ public class HomeActivity extends BaseActivity {
         viewPager.setOffscreenPageLimit(2);
 
         radioGroup.check(R.id.rb_pic);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL, false));
+        recyclerView.addItemDecoration(new SpaceItemDecoration());
+        mAdapter = new HomeAdapter(this, mediaList);
+        recyclerView.setAdapter(mAdapter);
+
     }
 
     @Override
@@ -136,6 +150,21 @@ public class HomeActivity extends BaseActivity {
 
             }
         });
+        mAdapter.setOnItemChildClickListener((adapter, view, position) -> {
+            switch (view.getId()) {
+                case R.id.delIb:
+                    mediaList.remove(position);
+                    mAdapter.notifyItemRemoved(position);
+                case R.id.img:
+                    //可预览图片
+                    break;
+                case R.id.icon_play:
+                    //可预览播放视频
+                    break;
+                default:
+                    break;
+            }
+        });
     }
 
     @OnClick({R.id.cameraIv})
@@ -175,7 +204,7 @@ public class HomeActivity extends BaseActivity {
         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (cameraIntent.resolveActivity(getPackageManager()) != null) {
             Uri imageUri;
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            if (SdkVersionUtils.checkedAndroid_Q()) {
                 imageUri = MediaUtils.createImageUri(getApplicationContext());
                 if (imageUri != null) {
                     cameraPath = imageUri.toString();
@@ -205,7 +234,7 @@ public class HomeActivity extends BaseActivity {
         Intent cameraIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
         if (cameraIntent.resolveActivity(getPackageManager()) != null) {
             Uri imageUri;
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            if (SdkVersionUtils.checkedAndroid_Q()) {
                 imageUri = MediaUtils.createVideoUri(getApplicationContext());
                 if (imageUri != null) {
                     cameraPath = imageUri.toString();
@@ -245,7 +274,7 @@ public class HomeActivity extends BaseActivity {
                         break;
                     case PictureConfig.REQUEST_CAMERA_PIC:
                         //拍照后处理结果
-                        requestCamera(PictureConfig.TYPE_PICTURE);
+                        requestCamera(PictureConfig.TYPE_IMAGE);
                         break;
                     default:
                         break;
@@ -275,7 +304,7 @@ public class HomeActivity extends BaseActivity {
                     });
 //            sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(new File(cameraPath))));
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        if (SdkVersionUtils.checkedAndroid_Q()) {
             String path = PictureFileUtils.getPath(getApplicationContext(), Uri.parse(cameraPath));
             File file = new File(path);
             size = file.length();
@@ -310,7 +339,32 @@ public class HomeActivity extends BaseActivity {
         media.setMimeType(mimeType);
         media.setSize(size);
         media.setChooseModel(chooseMode);
-        LogUtils.d("相机返回文件", new Gson().toJson(media));
+        media.setChecked(true);
+        mediaList.add(new HomeMediaBean(media, chooseMode, false));
+        mAdapter.notifyDataSetChanged();
+    }
 
+    //recyclerView设置间距
+    protected class SpaceItemDecoration extends RecyclerView.ItemDecoration {
+
+        private int mSpace = UIHelper.getDimensionPixelSize(R.dimen.margin_edge_10);
+
+        @Override
+        public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
+            super.getItemOffsets(outRect, view, parent, state);
+            outRect.right = mSpace;
+            outRect.left = mSpace;
+            outRect.bottom = mSpace;
+            if (parent.getChildAdapterPosition(view) == 0) {
+                outRect.top = mSpace;
+            } else {
+                outRect.top = 0;
+            }
+
+        }
+
+        SpaceItemDecoration() {
+
+        }
     }
 }

@@ -217,7 +217,7 @@ public class PictureFileUtils {
                 final String type = split[0];
 
                 if ("primary".equalsIgnoreCase(type)) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                    if (SdkVersionUtils.checkedAndroid_Q()) {
                         return context.getExternalFilesDir(Environment.DIRECTORY_PICTURES) + "/" + split[1];
                     } else {
                         return Environment.getExternalStorageDirectory() + "/" + split[1];
@@ -315,7 +315,7 @@ public class PictureFileUtils {
         int degree = 0;
         try {
             ExifInterface exifInterface;
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            if (SdkVersionUtils.checkedAndroid_Q()) {
                 ParcelFileDescriptor parcelFileDescriptor =
                         context.getContentResolver()
                                 .openFileDescriptor(Uri.parse(path), "r");
@@ -393,7 +393,7 @@ public class PictureFileUtils {
     public static String getDCIMCameraPath(Context ctx, String mimeType) {
         String absolutePath;
         try {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            if (SdkVersionUtils.checkedAndroid_Q()) {
                 if (PictureMimeType.eqVideo(mimeType)) {
                     absolutePath = "%" + ctx.getExternalFilesDir(Environment.DIRECTORY_MOVIES);
                 } else if (PictureMimeType.eqAudio(mimeType)) {
@@ -590,7 +590,7 @@ public class PictureFileUtils {
         if (degree > 0) {
             try {
                 // 针对相片有旋转问题的处理方式
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                if (SdkVersionUtils.checkedAndroid_Q()) {
                     BitmapFactory.Options opts = new BitmapFactory.Options();
                     opts.inSampleSize = 2;
                     ParcelFileDescriptor parcelFileDescriptor =

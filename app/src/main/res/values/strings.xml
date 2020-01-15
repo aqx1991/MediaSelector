@@ -8,4 +8,6 @@
     <string name="selector_photograph">拍照</string>
     <string name="selector_record_video">录视频</string>
     <string name="selector_cancel">取消</string>
+
+    <string name="hh_mm_ss">%02d:%02d</string>
 </resources>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="90dp">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:scaleType="centerCrop" />
+
+    <ImageView
+        android:id="@+id/checkIv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="@dimen/margin_edge_5"
+        android:src="@mipmap/sign_interest_select"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/durationTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/margin_edge_5"
+        android:layout_marginTop="@dimen/margin_edge_3"
+        android:layout_marginEnd="@dimen/margin_edge_5"
+        android:layout_marginBottom="@dimen/margin_edge_3"
+        android:background="@drawable/duration_bg"
+        android:textColor="@color/text_color_white"
+        android:textSize="@dimen/textsize_8"
+        android:visibility="invisible" />
+
+    <View
+        android:id="@+id/surface"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#EEFFFFFF"
+        android:visibility="gone" />
+</RelativeLayout>
