@@ -288,6 +288,11 @@ public class HomeActivity extends BaseActivity {
         }
     }
 
+    public void setMedia(HomeMediaBean mediaBean) {
+        mediaList.add(0, mediaBean);
+        mAdapter.notifyDataSetChanged();
+    }
+
     private void requestCamera(int chooseMode) {
         // 图片视频处理
         String mimeType = null;
@@ -340,8 +345,22 @@ public class HomeActivity extends BaseActivity {
         media.setSize(size);
         media.setChooseModel(chooseMode);
         media.setChecked(true);
-        mediaList.add(new HomeMediaBean(media, chooseMode, false));
+        HomeMediaBean homeMediaBean = new HomeMediaBean(media, chooseMode, false);
+        mediaList.add(homeMediaBean);
         mAdapter.notifyDataSetChanged();
+
+        switch (chooseMode) {
+            case PictureConfig.TYPE_IMAGE:
+                if (null != picFragment)
+                    picFragment.addPic(homeMediaBean);
+                break;
+            case PictureConfig.TYPE_VIDEO:
+                if (null != videoFragment)
+                    videoFragment.addVideo(homeMediaBean);
+                break;
+            default:
+                break;
+        }
     }
 
     //recyclerView设置间距

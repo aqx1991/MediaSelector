@@ -22,11 +22,11 @@ import java.util.concurrent.TimeUnit;
  * 描述：图片视频选择
  * 版本：V1.0
  */
-public class MediaAdapter extends BaseMultiItemQuickAdapter<HomeMediaBean, BaseViewHolder> {
+public class MediaMediaAdapter extends BaseMultiItemQuickAdapter<HomeMediaBean, BaseViewHolder> {
 
     private Fragment fragment;
 
-    public MediaAdapter(Fragment fragment, List<HomeMediaBean> data) {
+    public MediaMediaAdapter(Fragment fragment, List<HomeMediaBean> data) {
         super(data);
         this.fragment = fragment;
         addItemType(PictureConfig.TYPE_IMAGE, R.layout.adapter_media);

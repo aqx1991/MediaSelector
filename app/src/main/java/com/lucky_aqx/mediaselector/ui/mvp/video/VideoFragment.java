@@ -17,11 +17,13 @@ import com.lucky_aqx.media.config.PictureSelectionConfig;
 import com.lucky_aqx.media.entry.LocalMedia;
 import com.lucky_aqx.media.entry.LocalMediaFolder;
 import com.lucky_aqx.media.model.LocalMediaLoader;
+import com.lucky_aqx.media.utils.LogUtils;
 import com.lucky_aqx.mediaselector.R;
 import com.lucky_aqx.mediaselector.common.bean.HomeMediaBean;
 import com.lucky_aqx.mediaselector.common.utils.UIHelper;
-import com.lucky_aqx.mediaselector.ui.adapter.MediaAdapter;
+import com.lucky_aqx.mediaselector.ui.adapter.MediaMediaAdapter;
 import com.lucky_aqx.mediaselector.ui.base.BaseFragment;
+import com.lucky_aqx.mediaselector.ui.mvp.HomeActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,7 +67,7 @@ public class VideoFragment extends BaseFragment {
     };
 
     private List<HomeMediaBean> videos = new ArrayList<>();
-    private MediaAdapter mAdapter;
+    private MediaMediaAdapter mAdapter;
 
 
     @Override
@@ -79,7 +81,7 @@ public class VideoFragment extends BaseFragment {
         recyclerView.addItemDecoration(new SpaceItemDecoration());
         recyclerView.setLayoutManager(layoutManager);
 
-        mAdapter = new MediaAdapter(this, videos);
+        mAdapter = new MediaMediaAdapter(this, videos);
         recyclerView.setAdapter(mAdapter);
 
         PictureSelectionConfig config = PictureSelectionConfig.getCleanInstance();
@@ -92,8 +94,17 @@ public class VideoFragment extends BaseFragment {
     @Override
     public void initListener() {
         mAdapter.setOnItemClickListener((adapters, view, position) -> {
-
+            setVideo(position);
         });
+    }
+
+    private void setVideo(int position) {
+        for (HomeMediaBean mediaBean : videos) {
+            mediaBean.setChecked(position == videos.indexOf(mediaBean));
+            mediaBean.setEnable(false);
+        }
+        mAdapter.notifyDataSetChanged();
+        ((HomeActivity) context).setMedia(videos.get(position));
     }
 
     private void getAllVideoInfos() {
@@ -107,8 +118,10 @@ public class VideoFragment extends BaseFragment {
                     List<LocalMedia> result = folder.getImages();
                     if (mAdapter != null) {
                         videos.clear();
-                        for (LocalMedia localMedia : result)
+                        for (LocalMedia localMedia : result) {
+                            LogUtils.d("getAllVideoInfos", localMedia.getSize() / 1021 / 1021 + "");
                             videos.add(new HomeMediaBean(localMedia, PictureConfig.TYPE_VIDEO, true));
+                        }
                         mAdapter.notifyDataSetChanged();
                     }
                 }
@@ -123,6 +136,14 @@ public class VideoFragment extends BaseFragment {
                 }
             }
         });
+    }
+
+    public void addVideo(HomeMediaBean mediaBean) {
+        if (!isAdded())
+            return;
+        mediaBean.setEnable(false);
+        videos.add(0, mediaBean);
+        mAdapter.notifyDataSetChanged();
     }
 
     private class SpaceItemDecoration extends RecyclerView.ItemDecoration {

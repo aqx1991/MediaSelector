@@ -11,17 +11,20 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
 import com.lucky_aqx.media.config.PictureConfig;
 import com.lucky_aqx.media.config.PictureMimeType;
 import com.lucky_aqx.media.config.PictureSelectionConfig;
 import com.lucky_aqx.media.entry.LocalMedia;
 import com.lucky_aqx.media.entry.LocalMediaFolder;
 import com.lucky_aqx.media.model.LocalMediaLoader;
+import com.lucky_aqx.media.utils.LogUtils;
 import com.lucky_aqx.mediaselector.R;
 import com.lucky_aqx.mediaselector.common.bean.HomeMediaBean;
 import com.lucky_aqx.mediaselector.common.utils.UIHelper;
-import com.lucky_aqx.mediaselector.ui.adapter.MediaAdapter;
+import com.lucky_aqx.mediaselector.ui.adapter.MediaMediaAdapter;
 import com.lucky_aqx.mediaselector.ui.base.BaseFragment;
+import com.lucky_aqx.mediaselector.ui.mvp.HomeActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,7 +68,7 @@ public class PicFragment extends BaseFragment {
     };
 
     private List<HomeMediaBean> images = new ArrayList<>();
-    private MediaAdapter mAdapter;
+    private MediaMediaAdapter mAdapter;
 
     @Override
     public int getLayoutId() {
@@ -78,7 +81,7 @@ public class PicFragment extends BaseFragment {
         recyclerView.addItemDecoration(new SpaceItemDecoration());
         recyclerView.setLayoutManager(layoutManager);
 
-        mAdapter = new MediaAdapter(this, images);
+        mAdapter = new MediaMediaAdapter(this, images);
         recyclerView.setAdapter(mAdapter);
 
         PictureSelectionConfig config = PictureSelectionConfig.getCleanInstance();
@@ -91,7 +94,7 @@ public class PicFragment extends BaseFragment {
     @Override
     public void initListener() {
         mAdapter.setOnItemClickListener((adapters, view, position) -> {
-
+            ((HomeActivity) context).setMedia(images.get(position));
         });
     }
 
@@ -111,6 +114,7 @@ public class PicFragment extends BaseFragment {
                         mAdapter.notifyDataSetChanged();
                     }
                 }
+                LogUtils.d("getAllPhotoInfo", new Gson().toJson(images));
             }
 
             @Override
@@ -124,6 +128,12 @@ public class PicFragment extends BaseFragment {
         });
     }
 
+    public void addPic(HomeMediaBean mediaBean) {
+        if (!isAdded())
+            return;
+        images.add(0, mediaBean);
+        mAdapter.notifyDataSetChanged();
+    }
 
     private class SpaceItemDecoration extends RecyclerView.ItemDecoration {
 
