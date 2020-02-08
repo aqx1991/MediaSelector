@@ -23,6 +23,9 @@ import com.lucky_aqx.mediaselector.common.bean.HomeMediaBean;
 import com.lucky_aqx.mediaselector.common.utils.UIHelper;
 import com.lucky_aqx.mediaselector.ui.adapter.MediaMediaAdapter;
 import com.lucky_aqx.mediaselector.ui.base.BaseFragment;
+import com.lucky_aqx.mediaselector.ui.base.permission.PermissionHelper;
+import com.lucky_aqx.mediaselector.ui.base.permission.PermissionListener;
+import com.lucky_aqx.mediaselector.ui.base.permission.Permissions;
 import com.lucky_aqx.mediaselector.ui.mvp.HomeActivity;
 
 import java.util.ArrayList;
@@ -88,7 +91,13 @@ public class VideoFragment extends BaseFragment {
         config.chooseMode = PictureMimeType.ofVideo();
         mediaLoader = new LocalMediaLoader(context, config);
 
-        getAllVideoInfos();
+        PermissionHelper.requestPermissions(getActivity(), Permissions.PERMISSIONS_BIOSPSY_AUDIO,
+                getResources().getString(R.string.app_name) + "需要相机、存储权限", new PermissionListener() {
+                    @Override
+                    public void onPassed() {
+                        getAllVideoInfos();
+                    }
+                });
     }
 
     @Override

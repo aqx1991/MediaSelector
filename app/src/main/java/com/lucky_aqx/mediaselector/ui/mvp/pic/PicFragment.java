@@ -24,7 +24,11 @@ import com.lucky_aqx.mediaselector.common.bean.HomeMediaBean;
 import com.lucky_aqx.mediaselector.common.utils.UIHelper;
 import com.lucky_aqx.mediaselector.ui.adapter.MediaMediaAdapter;
 import com.lucky_aqx.mediaselector.ui.base.BaseFragment;
+import com.lucky_aqx.mediaselector.ui.base.permission.PermissionHelper;
+import com.lucky_aqx.mediaselector.ui.base.permission.PermissionListener;
+import com.lucky_aqx.mediaselector.ui.base.permission.Permissions;
 import com.lucky_aqx.mediaselector.ui.mvp.HomeActivity;
+import com.lucky_aqx.mediaselector.ui.weight.PhotoItemSelectedDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,7 +92,14 @@ public class PicFragment extends BaseFragment {
         config.chooseMode = PictureMimeType.ofImage();
         mediaLoader = new LocalMediaLoader(context, config);
 
-        getAllPhotoInfo();
+        PermissionHelper.requestPermissions(getActivity(), Permissions.PERMISSIONS_BIOSPSY_AUDIO,
+                getResources().getString(R.string.app_name) + "需要相机、存储权限", new PermissionListener() {
+                    @Override
+                    public void onPassed() {
+                        getAllPhotoInfo();
+                    }
+                });
+
     }
 
     @Override
